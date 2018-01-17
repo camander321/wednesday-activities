@@ -8,10 +8,28 @@
     <meta charset="utf-8">
     <title>Wednesday, wk3 Projects</title>
   </head>
-  <h1>Choose an activity</h1>
-  <button id="factorial" class="btn btn-primary">Calculate factorials</button>
-  <button id="palindromes" class="btn btn-primary">Is your text a palindrome?</button>
-  <button id="prime" class="btn btn-primary">Find prime numbers</button>
+  <body>
+    <div class="container">
+      <h1>Choose an activity</h1>
+      <button id="factorial" class="btn btn-primary">Calculate factorials</button>
+      <button id="palindromes" class="btn btn-primary">Is your text a palindrome?</button>
+      <button id="prime" class="btn btn-primary">Find prime numbers</button>
+      <div id="results">
 
+        <form class="form">
+
+          <div class="form-group">
+            <label for="input-num" class="factorial">Enter a number you would like to calculate a factorial for.</label>
+            <label for="input-num" class="palindrome">Enter some text to see if its a palindrome</label>
+            <label for="input-num" class="prime">Enter a number to see all primes less than it.</label>
+            <input id="input-num" type="text" class="form-control">
+          </div>
+
+          <button type="submit" class="btn btn-warning">Submit</button>
+        </form>
+
+        <p id="output"></p>
+      </div>
+    </div>
   </body>
 </html>
