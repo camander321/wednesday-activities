@@ -19,7 +19,7 @@ function rFactorial(max) {
 
 //palindrome functions
 function wordCheck(word) {
-  word = word.toLowerCase().replace(/ /g, "").replace(/[\W,]/g, "");
+  word = word.toLowerCase().replace(/[\W ]/g, "");
 
   for (var i = 0; i < word.length/2; i++) {
     if (word.charAt(i) !== word.charAt(word.length-(i+1))) {
@@ -44,7 +44,7 @@ function primes(max) {
       return number % i !== 0 || number === i;
     });
   }
-  return numbers;
+  return numbers.join(", ");
 }
 
 $(document).ready(function() {
@@ -55,11 +55,11 @@ $(document).ready(function() {
     event.preventDefault();
     var output;
 
-    if (mode === "f") {
+    if (mode === "factorial") {
       output = rFactorial(parseInt($("#input-num").val()));
-    } else if (mode === "p") {
+    } else if (mode === "palindrome") {
       output = wordCheck($("#input-num").val());
-    } else if (mode === "pr" ){
+    } else if (mode === "prime" ){
       output = primes(parseInt($("#input-num").val()));
     }
     $("#output").hide();
@@ -69,22 +69,15 @@ $(document).ready(function() {
 
 
 
-  $("#factorial").click(function() {
-    $("label").hide();
-    $(".factorial").fadeIn();
-    mode = "f";
+  var m = ["factorial", "palindrome", "prime"]
+  m.forEach(function(m) {
+    $("#" + m).click(function() {
+      $(".form").show();
+      $("#input-num").val('');
+      $("label").hide();
+      $("#output").hide();
+      $("." + m).fadeIn();
+      mode = m;
+    });
   });
-
-  $("#palindromes").click(function() {
-    $("label").hide();
-    $(".palindrome").fadeIn();
-    mode = "p";
-  });
-
-  $("#prime").click(function() {
-    $("label").hide();
-    $(".prime").fadeIn();
-    mode = "pr";
-  });
-
 });
